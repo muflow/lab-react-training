@@ -1,0 +1,37 @@
+.drive-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 20px 0;
+
+}
+
+.driver-image-container {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.driver-image-container img {
+    width: auto;
+    height: 100%;
+    
+}
+
+.driver-data {
+    margin-left: 10px;
+}
+
+.driver-data h3 {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.driver-data p {
+    margin: 0;
+    padding: 0;
+}

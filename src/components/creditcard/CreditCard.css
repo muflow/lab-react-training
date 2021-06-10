@@ -1,0 +1,27 @@
+.bank-card-container {
+    width: 350px;
+    height: 180px;
+    border-radius: 12px;
+    margin-right: 20px;
+}
+
+.logo-container img{
+    padding-left: 78%;
+    margin-top: 20px;
+}
+
+.logo {
+    width: 60px;
+    margin: 0 auto;
+}
+
+.card-number {
+    text-align: center;
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.card-data {
+    margin-left: 5%;
+}
