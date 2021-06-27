@@ -1,0 +1,20 @@
+.student-container {
+    padding: 5px 5px 2px 5px;
+    display: flex;
+    border: 1px solid black;
+    margin-bottom: 8px;
+}
+
+.student-data p {
+    margin-top: 0;
+    margin-bottom: 2px;
+    margin-left: 4px;
+}
+
+.student-data span {
+    font-weight: bold;
+}
+
+.student-pic img {
+    width: 100px;
+}

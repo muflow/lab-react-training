@@ -2,14 +2,55 @@ import logo from './logo.svg';
 import './App.css';
 import  IdCard from './components/idcard/IdCard';
 import  Greetings from './components/Greetings/Greetings';
-import Random from './components/random/Random'
-import BoxColor from './components/boxcolor/BoxColor'
-import CreditCard from './components/creditcard/CreditCard'
-import Rating from './components/rating/Rating'
-import DriverCard from './components/drivecard/DriverCard'
+import Random from './components/random/Random';
+import BoxColor from './components/boxcolor/BoxColor';
+import CreditCard from './components/creditcard/CreditCard';
+import Rating from './components/rating/Rating';
+import DriverCard from './components/drivecard/DriverCard';
+import LikeButton from './components/likebutton/LikeButton';
+import ClickablePicture from './components/clickablepicture/ClickablePicture';
+import Dice from './components/dice/Dice';
+import Carousel from './components/carousel/Carousel';
+import NumbersTable from './components/numberstable/NumbersTable';
+import FaceBook from './components/facebook/FaceBook';
+import SignupPage from './components/signuppage/SignupPage'
+
+import profiles from './data/berlin.json';
+import React from 'react';
 
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+        super(props);
+        this.state = {
+            data: [ 
+                {
+            email: '',
+            password: '',
+            nationality: ''
+            }
+        ]
+        }
+    }
+
+    handleChange = ({ target }) => {
+        this.setState({ [target.name]: target.value });
+    }
+
+    onSubmit = event => {
+        event.preventDefault();
+        const email = this.email.value;
+        const password = this.password.value;
+        const nationality = this.nationality.value;
+        const info = {email: email, password: password, nationality: nationality}
+        const data = [...this.state.data, info]
+        
+        this.setState({
+            data: data
+        })
+    }
+
+  render() {
   return (
     <div className="App">
       
@@ -64,6 +105,68 @@ function App() {
             licensePlate: "BE33ER"
           }} />
 
+      <h2>Like Button</h2>
+        <LikeButton />
+
+        <h2>Clickable Picture</h2>
+        <ClickablePicture />
+
+      <h2>Dice</h2>
+        <Dice />
+
+      <h2>Carousel</h2>
+      <Carousel />
+
+      <h2>Numbers Table</h2>
+      <NumbersTable limit={12} />
+
+      <h2>FaceBook (Simple)</h2>
+      
+      {profiles.map((student, index) => {
+        return (
+          <FaceBook
+            firstName={student.firstName}
+            lastName={student.lastName}
+            country={student.country}
+            img={student.img}
+            isStudent={student.isStudent}
+          />
+
+        )
+      }).slice(0, 2)}
+      
+      {/* FaceBook advanced: work in progress... */}
+
+      <h2>Signup Page</h2>
+      
+       <form onSubmit={this.onSubmit}>
+              <input
+                  type="email"
+                  placeholder="Email"
+                  ref={input => this.email = input}
+                  />
+              <input
+                    type="password"
+                    placeholder="Password"
+                    ref={input => this.password = input}
+                    />
+                <input
+                    type="text"
+                    placeholder="Nationality"
+                    ref={input => this.nationality = input}
+                />
+                    
+              
+              <button type="submit" className="btn btn-primary">Save</button>
+        </form>
+
+        <div className="row">
+          {
+            this.state.data.map((info, index) => <SignupPage key={index} info={info}/>)
+          }
+        </div>
+
+
 
 
 
@@ -75,7 +178,7 @@ function App() {
       <br></br>
 
     </div>
-  );
+  )};
 }
 
 export default App;
